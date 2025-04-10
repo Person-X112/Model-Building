@@ -1,7 +1,3 @@
-Below is a detailed Markdown (MD) file that explains the `BuildingComponent.jsx` file line by line. Since your knowledge of React concepts like `useEffect` is limited, I’ll provide in-depth explanations of React hooks and other features wherever they’re used. I’ll also break down the Three.js features and functions in detail to help you understand how they work in this 3D visualization. This will serve as a comprehensive guide to the code.
-
----
-
 # BuildingComponent.jsx - Line-by-Line Explanation
 
 This Markdown file explains the `BuildingComponent.jsx` file, a React component that uses Three.js to render an interactive 3D building model. The component creates a multi-story building with floors, windows, and clickable floor plans, allowing users to explore the structure in a browser. I’ll walk through each line, focusing on React concepts (especially `useEffect` and `useRef`) and Three.js features, explaining their purpose and how they work together.
