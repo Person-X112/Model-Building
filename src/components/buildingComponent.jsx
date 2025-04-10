@@ -294,33 +294,46 @@ const BuildingComponent = () => {
     }
 
     let backButton = null;
-    function showBackButton() {
-      if (backButton) backButton.remove();
-      backButton = document.createElement('button');
-      backButton.innerHTML = '<';
-      backButton.style.position = 'absolute';
-      backButton.style.top = '10px';
-      backButton.style.left = '10px';
-      backButton.style.fontSize = '24px';
-      backButton.style.background = 'none';
-      backButton.style.border = 'none';
-      backButton.style.cursor = 'pointer';
-      backButton.style.color = '#000';
-      backButton.onclick = () => {
-        if (currentPlan) {
-          currentPlan.visible = false;
-          currentPlan = null;
-        }
-        buildingGroup.visible = true;
-        animateCamera(camera.position, initialCameraPos, 1000);
-        controls.target.copy(initialCameraTarget);
-        controls.update();
-        if (backButton) backButton.remove();
-      };
-      document.body.appendChild(backButton);
-    }
 
-    window.addEventListener('click', onMouseClick);
+function handleBack() {
+  if (currentPlan) {
+    currentPlan.visible = false;
+    currentPlan = null;
+  }
+  buildingGroup.visible = true;
+  animateCamera(camera.position, initialCameraPos, 1000);
+  controls.target.copy(initialCameraTarget);
+  controls.update();
+  if (backButton) backButton.remove();
+}
+
+function showBackButton() {
+  if (backButton) backButton.remove();
+
+  backButton = document.createElement('button');
+  backButton.innerHTML = '<';
+  backButton.style.position = 'absolute';
+  backButton.style.top = '10px';
+  backButton.style.left = '10px';
+  backButton.style.fontSize = '24px';
+  backButton.style.background = 'none';
+  backButton.style.border = 'none';
+  backButton.style.cursor = 'pointer';
+  backButton.style.color = '#000';
+
+  backButton.onclick = handleBack;
+
+  document.body.appendChild(backButton);
+}
+
+// ESC key listener
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    handleBack();
+  }
+});
+
+window.addEventListener('click', onMouseClick);
 
     const onWindowResize = () => {
       if (!isMounted) return;
